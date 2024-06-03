@@ -13,6 +13,6 @@ git commit -a -m "feat: build"
 
 
 # 如果发布到 https://<USERNAME>.github.io/<REPO>
-git push -f git@github.com:githubhtml233/githubhtml233.github.io.git main:gh-pages
+git push -f git@github.com:githubhtml233/githubhtml233.github.io.git main
 
 cd -
