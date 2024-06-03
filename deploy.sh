@@ -7,6 +7,8 @@ set -e
 export NODE_OPTIONS=--openssl-legacy-provider
 NODE_OPTIONS=--openssl-legacy-provider npx vuepress build
 
+
+git add --all
 git commit -a -m "feat: build"
 
 
