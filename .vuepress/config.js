@@ -1,6 +1,7 @@
 module.exports = {
     title: '路一的博客',
     description: '这是我的第一个 VuePress 文档网站',
+    dest:'docs',
     themeConfig: {
       logo: '/blog.png',
       nav: [
