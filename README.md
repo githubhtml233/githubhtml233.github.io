@@ -7,10 +7,10 @@ actionText: 开始学习 →
 actionLink: /materials/
 features:
 - title: 简单
-  details: 只需一个命令就可以创建并部署你的文档网站。
+  details: 简单态度过简单人生
 - title: 灵活
-  details: 通过配置和插件可以轻松扩展功能。
+  details: 能写代码，能送外卖
 - title: 高效
-  details: 享受 Vue 和 Markdown 的最佳组合体验。
-footer: 由 VuePress 驱动
+  details: 一定程度的高效成瘾
+footer: 由空空的脑袋驱动
 ---

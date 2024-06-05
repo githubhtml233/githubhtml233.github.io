@@ -9,7 +9,7 @@ NODE_OPTIONS=--openssl-legacy-provider npx vuepress build
 
 
 git add --all
-git commit -a -m "feat: build"
+git commit -a -m "feat: update"
 
 
 # 如果发布到 https://<USERNAME>.github.io/<REPO>

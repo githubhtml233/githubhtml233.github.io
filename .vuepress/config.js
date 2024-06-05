@@ -10,7 +10,7 @@ module.exports = {
       sidebar: {
         '/materials/': [
           {
-            title: '学习资料',
+            title: '上下求索',
             collapsable: false,
             children: [
               '',
