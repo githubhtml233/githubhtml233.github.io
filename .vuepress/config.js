@@ -5,7 +5,7 @@ module.exports = {
     themeConfig: {
       logo: '/blog.png',
       nav: [
-        { text: '学习资料', link: '/materials/' },
+        { text: '上下求索', link: '/materials/' },
       ],
       sidebar: {
         '/materials/': [
