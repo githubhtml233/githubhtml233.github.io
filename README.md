@@ -1,6 +1,6 @@
 ---
 home: true
-heroImage: /blog.png
+heroImage: /LOGO.JPG
 heroText: 路一的个人博客
 tagline: 学无止境，勇往直前
 actionText: 开始学习 →
