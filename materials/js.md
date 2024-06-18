@@ -1,44 +1,103 @@
 # JavaScript
-## GET与POST的区别
-- GET请求参数存在长度限制，POST无限制
-- GET产生一个TCP数据包，POST产生两个
-- GET请求的内容暴露在地址栏中，POST的请求内容包含在Request Body中
-- GET的请求内容会被浏览器主动缓存
-- POST比GET更安全
-- GET回退无风险，POST会重新提交请求
 ## 闭包
-***定义：*** 指有权访问另一函数作用域中变量的函数
+### 定义
+指有权访问另一函数作用域中变量的函数，也可以说是在创建它的上下文中保存变量的函数，即使在该上下文之外调用它，这些变量仍然可以被访问和修改。闭包使得函数能够“记住”并访问其词法作用域，即使函数在其词法作用域外被执行。
 
-***作用：***
-- 常用来定义模块，将操作函数暴露给外部，细隐藏在模块内部
-- 创建私有变量
-- 保留某些停止执行的上下文变量
+### 原理
+闭包依赖于词法作用域，即在代码编写时确定变量和函数的可访问性。每当一个函数被创建时，闭包包含这个函数和它在定义时所在的词法作用域中的变量。
+
+### 闭包的例子
+#### 例子1：基本闭包
 ```js
-function module() {
-	var arr = [];
-	function add(val) {
-		if (typeof val == 'number') {
-			arr.push(val);
-		}
-	}
-	function get(index) {
-		if (index < arr.length) {
-			return arr[index]
-		} else {
-			return null;
-		}
-	}
-	return {
-		add: add,
-		get: get
-	}
+function outerFunction() {
+    let outerVariable = 'I am outside!';
+    
+    function innerFunction() {
+        console.log(outerVariable);
+    }
+    
+    return innerFunction;
 }
-var mod1 = module();
-mod1.add(1);
-mod1.add(2);
-mod1.add('xxx');
-console.log(mod1.get(2));
+
+const myClosure = outerFunction();
+myClosure(); // 输出: I am outside!
 ```
+在这个例子中，innerFunction 是一个闭包，即使在 outerFunction 执行完成后，innerFunction 依然能够访问 outerVariable。
+#### 例子2：模拟私有变量
+闭包可以用来模拟私有变量，避免直接访问
+```js
+function createCounter() {
+    let count = 0;
+    
+    return {
+        increment: function() {
+            count++;
+            return count;
+        },
+        decrement: function() {
+            count--;
+            return count;
+        },
+        getCount: function() {
+            return count;
+        }
+    };
+}
+
+const counter = createCounter();
+console.log(counter.increment()); // 输出: 1
+console.log(counter.increment()); // 输出: 2
+console.log(counter.decrement()); // 输出: 1
+console.log(counter.getCount());  // 输出: 1
+```
+在这个例子中， count 变量是 createCounter 私有变量，只能通过返回的对象的方法来访问和修改。
+#### 例子3：循环中的闭包问题及其解决
+在使用 var 声明变量时，循环中的闭包常常会遇到问题。
+```js
+function createFunctions() {
+    var functions = [];
+    
+    for (var i = 0; i < 3; i++) {
+        functions.push(function() {
+            console.log(i);
+        });
+    }
+    
+    return functions;
+}
+
+const funcs = createFunctions();
+funcs[0](); // 输出: 3
+funcs[1](); // 输出: 3
+funcs[2](); // 输出: 3
+```
+在这个例子中，所有函数都引用了相同的 i 变量。当这些函数被调用时，i 的值已经是 3 了。
+可以通过使用 let 来解决这个问题，因为 let 具有块级作用域。
+```js
+function createFunctions() {
+    var functions = [];
+    
+    for (let i = 0; i < 3; i++) {
+        functions.push(function() {
+            console.log(i);
+        });
+    }
+    
+    return functions;
+}
+
+const funcs = createFunctions();
+funcs[0](); // 输出: 0
+funcs[1](); // 输出: 1
+funcs[2](); // 输出: 2
+```
+现在每个闭包都有自己独立的 i 变量，因此输出值是正确的
+
+#### 闭包的应用场景
+1. 数据封装：使用闭包封装数据，使其只能通过特定方法访问
+2. 函数工厂：生成特定的函数，例如带有预设参数的函数
+3. 回调函数和事件处理：闭包在异步编程中非常有用，能够保留回调函数中的上下文
+4. 模块模式：实现模块模式，封装私有数据和方法，暴露公共接口
 ## 对象与类
 什么是对象 对象可以被看作一组没有特定顺序的值。 在对象中，属性可分为数据属性和访问器属性，且都有一些内部特性描述属性的特征。这种内部特征用[[Property]]标识，其中Property表示不同的标识。
 

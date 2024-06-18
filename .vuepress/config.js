@@ -14,11 +14,10 @@ module.exports = {
             collapsable: false,
             children: [
               '',
-              'getting-started',
-              'css',
+              'js',
               'html',
               'http',
-              'js'
+              'css'
             ]
           }
         ]
