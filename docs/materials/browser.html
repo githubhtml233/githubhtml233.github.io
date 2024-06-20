@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>浏览器渲染过程 | 路一的博客</title>
+    <meta name="generator" content="VuePress 1.9.10">
+    
+    <meta name="description" content="这是我的第一个 VuePress 文档网站">
+    
+    <link rel="preload" href="/assets/css/0.styles.d880e751.css" as="style"><link rel="preload" href="/assets/js/app.2e65bf3b.js" as="script"><link rel="preload" href="/assets/js/2.4956e756.js" as="script"><link rel="preload" href="/assets/js/1.87dc5325.js" as="script"><link rel="preload" href="/assets/js/24.f4766a83.js" as="script"><link rel="prefetch" href="/assets/js/10.d4494d20.js"><link rel="prefetch" href="/assets/js/11.061e5791.js"><link rel="prefetch" href="/assets/js/12.055809c6.js"><link rel="prefetch" href="/assets/js/13.7fdbf405.js"><link rel="prefetch" href="/assets/js/14.14622866.js"><link rel="prefetch" href="/assets/js/15.daca3eaf.js"><link rel="prefetch" href="/assets/js/16.02108806.js"><link rel="prefetch" href="/assets/js/17.62f1837f.js"><link rel="prefetch" href="/assets/js/18.a43dd3d7.js"><link rel="prefetch" href="/assets/js/19.ef530376.js"><link rel="prefetch" href="/assets/js/20.cb56acdb.js"><link rel="prefetch" href="/assets/js/21.7b1b41a8.js"><link rel="prefetch" href="/assets/js/22.b8c02751.js"><link rel="prefetch" href="/assets/js/23.eb2415c1.js"><link rel="prefetch" href="/assets/js/25.6708ea8d.js"><link rel="prefetch" href="/assets/js/26.20df00d4.js"><link rel="prefetch" href="/assets/js/27.fff1a6e2.js"><link rel="prefetch" href="/assets/js/28.f675f8ef.js"><link rel="prefetch" href="/assets/js/3.6e0c9689.js"><link rel="prefetch" href="/assets/js/4.05553650.js"><link rel="prefetch" href="/assets/js/5.87a10a4c.js"><link rel="prefetch" href="/assets/js/6.0ef50fc3.js"><link rel="prefetch" href="/assets/js/7.47e82e36.js"><link rel="prefetch" href="/assets/js/vendors~docsearch.77260563.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.d880e751.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/blog.png" alt="路一的博客" class="logo"> <span class="site-name can-hide">路一的博客</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/materials/" class="nav-link router-link-active">
+  上下求索
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/materials/" class="nav-link router-link-active">
+  上下求索
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>上下求索</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/materials/" aria-current="page" class="sidebar-link">指南</a></li><li><a href="/materials/js.html" class="sidebar-link">JavaScript</a></li><li><a href="/materials/browser.html" aria-current="page" class="active sidebar-link">浏览器渲染过程</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/materials/browser.html#处理-html" class="sidebar-link">处理 HTML</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/materials/browser.html#例子" class="sidebar-link">例子</a></li></ul></li><li class="sidebar-sub-header"><a href="/materials/browser.html#处理-css" class="sidebar-link">处理 CSS</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/materials/browser.html#例子-2" class="sidebar-link">例子</a></li></ul></li><li class="sidebar-sub-header"><a href="/materials/browser.html#构建渲染树" class="sidebar-link">构建渲染树</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/materials/browser.html#例子-3" class="sidebar-link">例子</a></li></ul></li><li class="sidebar-sub-header"><a href="/materials/browser.html#布局-重排" class="sidebar-link">布局（重排）</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/materials/browser.html#例子-4" class="sidebar-link">例子</a></li></ul></li><li class="sidebar-sub-header"><a href="/materials/browser.html#绘制-重绘" class="sidebar-link">绘制（重绘）</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/materials/browser.html#例子-5" class="sidebar-link">例子</a></li></ul></li><li class="sidebar-sub-header"><a href="/materials/browser.html#增量更新" class="sidebar-link">增量更新</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/materials/browser.html#例子-6" class="sidebar-link">例子</a></li></ul></li><li class="sidebar-sub-header"><a href="/materials/browser.html#优化技巧" class="sidebar-link">优化技巧</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/materials/browser.html#例子-7" class="sidebar-link">例子</a></li></ul></li></ul></li><li><a href="/materials/http.html" class="sidebar-link">HTTP</a></li><li><a href="/materials/html.html" class="sidebar-link">HTML</a></li><li><a href="/materials/css.html" class="sidebar-link">CSS</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="浏览器渲染过程"><a href="#浏览器渲染过程" class="header-anchor">#</a> 浏览器渲染过程</h1> <p>首先我们来简单了解下浏览器渲染过程，这个过程一般包含以下步骤：</p> <ol><li>处理 HTML：浏览器接收到 HTML 文档后，开始解析 HTML 标签，生成 DOM 树（Document Object Model Tree）。</li> <li>处理 CSS： 解析 CSS 文件和内嵌的样式，生成 CSSOM 树（CSS Object Model Tree）。</li> <li>构建渲染树：将 DOM 和 CSSOM 树结合起来，生成渲染树（Render Tree）。渲染树包含了需要显示在屏幕上的所有结点。</li> <li>布局（重排）：浏览器计算渲染树中每个节点的位置和大小。</li> <li>绘制（重绘）：将渲染树中的每个节点绘制到屏幕上。</li></ol> <p>接着我们对每一个步骤进行更为详细地讲解：</p> <h2 id="处理-html"><a href="#处理-html" class="header-anchor">#</a> 处理 HTML</h2> <p>当浏览器接收到 HTML 文档后，会逐行解析 HTML 标签，生成 DOM 树。DOM 树是一种树状结构，表示 HTML 文档的结构。</p> <h3 id="例子"><a href="#例子" class="header-anchor">#</a> 例子</h3> <h4 id="html-文档"><a href="#html-文档" class="header-anchor">#</a> HTML 文档</h4> <div class="language-html extra-class"><pre class="language-html"><code><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">html</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">&gt;</span></span>Example<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>container<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">&gt;</span></span>Hello, World!<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>This is a simple example.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><h4 id="生成的-dom-树"><a href="#生成的-dom-树" class="header-anchor">#</a> 生成的 DOM 树</h4> <div class="language-markdown extra-class"><pre class="language-markdown"><code><span class="token list punctuation">-</span> html
+  <span class="token list punctuation">-</span> head
+    <span class="token list punctuation">-</span> title
+      <span class="token list punctuation">-</span> &quot;Example&quot;
+  <span class="token list punctuation">-</span> body
+    <span class="token list punctuation">-</span> div#container
+      <span class="token list punctuation">-</span> h1
+        <span class="token list punctuation">-</span> &quot;Hello, World!&quot;
+      <span class="token list punctuation">-</span> p
+        <span class="token list punctuation">-</span> &quot;This is a simple example.&quot;
+</code></pre></div><h2 id="处理-css"><a href="#处理-css" class="header-anchor">#</a> 处理 CSS</h2> <p>浏览器解析 CSS 样式和内嵌样式，生成 CSSOM 树。CSSOM 树描述了文档的样式规则。</p> <h3 id="例子-2"><a href="#例子-2" class="header-anchor">#</a> 例子</h3> <h4 id="css-样式"><a href="#css-样式" class="header-anchor">#</a> CSS 样式</h4> <div class="language-css extra-class"><pre class="language-css"><code><span class="token selector">body</span> <span class="token punctuation">{</span>
+  <span class="token property">font-family</span><span class="token punctuation">:</span> Arial<span class="token punctuation">,</span> sans-serif<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">#container</span> <span class="token punctuation">{</span>
+  <span class="token property">width</span><span class="token punctuation">:</span> 80%<span class="token punctuation">;</span>
+  <span class="token property">margin</span><span class="token punctuation">:</span> 0 auto<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">h1</span> <span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> blue<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">p</span> <span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> green<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h4 id="生成的-cssom-树"><a href="#生成的-cssom-树" class="header-anchor">#</a> 生成的 CSSOM 树</h4> <div class="language-markdown extra-class"><pre class="language-markdown"><code><span class="token list punctuation">-</span> body
+  <span class="token list punctuation">-</span> font-family: Arial, sans-serif
+<span class="token list punctuation">-</span> #container
+  <span class="token list punctuation">-</span> width: 80%
+  <span class="token list punctuation">-</span> margin: 0 auto
+<span class="token list punctuation">-</span> h1
+  <span class="token list punctuation">-</span> color: blue
+<span class="token list punctuation">-</span> p
+  <span class="token list punctuation">-</span> color: green
+</code></pre></div><h2 id="构建渲染树"><a href="#构建渲染树" class="header-anchor">#</a> 构建渲染树</h2> <p>浏览器将 DOM 树和 CSSOM 树结合起来，生成渲染树。渲染树包含了需要显示在屏幕上的所有节点。</p> <h3 id="例子-3"><a href="#例子-3" class="header-anchor">#</a> 例子</h3> <p>渲染树中的每个节点都包含了需要绘制的内容和样式信息：</p> <div class="language-markdown extra-class"><pre class="language-markdown"><code><span class="token list punctuation">-</span> RenderRoot
+  <span class="token list punctuation">-</span> RenderBlock (body)
+    <span class="token list punctuation">-</span> RenderBlock (div#container)
+      <span class="token list punctuation">-</span> RenderInline (h1)
+        <span class="token list punctuation">-</span> &quot;Hello, World!&quot;
+      <span class="token list punctuation">-</span> RenderInline (p)
+        <span class="token list punctuation">-</span> &quot;This is a simple example.&quot;
+</code></pre></div><p>渲染树省略了那些不可见的元素，比如 <code>&lt;head&gt;</code> 中的内容</p> <h2 id="布局-重排"><a href="#布局-重排" class="header-anchor">#</a> 布局（重排）</h2> <p>浏览器计算渲染树中每个节点的位置和大小。这个过程称为布局或重排。布局从渲染树的根节点开始，根据 CSS 盒模型计算每个节点的位置和尺寸。</p> <h3 id="例子-4"><a href="#例子-4" class="header-anchor">#</a> 例子</h3> <p>假设浏览器窗口宽度为 1000 px，渲染树的布局计算可能如下：
+<code>body</code>：宽度1000px，高度根据内容确定
+<code>div#container</code>：宽度80%（800px），水平居中（左右各100px的margin）
+<code>h1</code>和<code>p</code>：根据内容和样式计算高度和位置</p> <h2 id="绘制-重绘"><a href="#绘制-重绘" class="header-anchor">#</a> 绘制（重绘）</h2> <p>浏览器将渲染树中的每个节点绘制到屏幕上。绘制过程涉及将样式应用到节点上，并调用系统的绘制功能绘制每个像素。</p> <h3 id="例子-5"><a href="#例子-5" class="header-anchor">#</a> 例子</h3> <p>浏览器使用绘制引擎（如Skia或Direct2D）将每个节点的内容绘制到屏幕上：</p> <p>绘制<code>div#container</code>的背景和边框
+绘制<code>h</code>1的蓝色文本 “Hello, World!”
+绘制<code>p</code>的绿色文本 “This is a simple example.”</p> <h2 id="增量更新"><a href="#增量更新" class="header-anchor">#</a> 增量更新</h2> <p>当页面内容或样式发生变化时，浏览器会进行增量更新。这通常涉及以下几种情况：</p> <ul><li>DOM 变化：添加、删除或修改节点</li> <li>样式变化： 修改 CSS 样式</li> <li>布局变化： 节点的位置或尺寸发生变化</li> <li>重绘： 节点的外观发生变化（如颜色、字体等）</li></ul> <h3 id="例子-6"><a href="#例子-6" class="header-anchor">#</a> 例子</h3> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 修改DOM</span>
+<span class="token keyword">let</span> container <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'container'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">let</span> newElement <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">'p'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+newElement<span class="token punctuation">.</span>textContent <span class="token operator">=</span> <span class="token string">'This is a new paragraph.'</span><span class="token punctuation">;</span>
+container<span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>newElement<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 修改样式</span>
+container<span class="token punctuation">.</span>style<span class="token punctuation">.</span>backgroundColor <span class="token operator">=</span> <span class="token string">'lightgrey'</span><span class="token punctuation">;</span>
+</code></pre></div><h2 id="优化技巧"><a href="#优化技巧" class="header-anchor">#</a> 优化技巧</h2> <ul><li>减少 DOM 操作：尽量减少直接的 DOM 操作，使用文档片段（DocumentFragment）批量操作 DOM</li> <li>减少重排和重绘：避免频繁修改影响布局的属性，使用 CSS 类进行样式修改</li> <li>使用虚拟 DOM：如 React 中的虚拟 DOM 机制，通过差异计算（diffing）最小化实际的 DOM 操作</li></ul> <h3 id="例子-7"><a href="#例子-7" class="header-anchor">#</a> 例子</h3> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 使用文档片段批量添加元素</span>
+<span class="token keyword">let</span> fragment <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createDocumentFragment</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">10</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">let</span> newElement <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">'p'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  newElement<span class="token punctuation">.</span>textContent <span class="token operator">=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Paragraph </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span>
+  fragment<span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>newElement<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+container<span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>fragment<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/materials/js.html" class="prev">
+        JavaScript
+      </a></span> <span class="next"><a href="/materials/http.html">
+        HTTP
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.2e65bf3b.js" defer></script><script src="/assets/js/2.4956e756.js" defer></script><script src="/assets/js/1.87dc5325.js" defer></script><script src="/assets/js/24.f4766a83.js" defer></script>
+  </body>
+</html>

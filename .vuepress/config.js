@@ -15,8 +15,9 @@ module.exports = {
             children: [
               '',
               'js',
-              'html',
+              'browser',
               'http',
+              'html',
               'css'
             ]
           }
