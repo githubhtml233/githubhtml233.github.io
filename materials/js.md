@@ -267,3 +267,89 @@ const Animal = class {};
 构造函数中，this指向创建的新对象
 call、apply和bind强行改变this指向
 箭头函数中，this指向为离它最近的父作用域this
+## 事件循环机制
+### 定义
+事件循环是 JavaScript 运行时的一部分，用于处理和协调执行代码、收集和处理事件、执行子任务等。它允许 JavaScript 在单线程环境中实现异步编程，确保非阻塞地执行。
+### 原理
+事件循环的核心是一个简单的循环机制，用于监控和处理各种任务队列。以下是事件循环的主要步骤：
+1. 执行栈：这是一个后进先出的栈结构，用于存储所有执行上下文（包括函数调用、全局代码等）。当前正在执行的代码总是在栈顶。
+2. 宏任务队列：用于存储需要异步执行的任务，包括 setTimeout、setInterval、I/O 操作等。
+3. 微任务队列：用于存储需要尽快执行的任务，包括 Promise 回调、MutationObserver 等。
+### 事件循环的具体执行步骤
+1. 从执行栈中取出所有同步代码，直至执行栈为空
+2. 检查微任务队列，如果不为空，则依次取出并执行所有微任务，直到微任务队列为空。
+3. 执行一个宏任务（从宏任务队列中取出第一个任务并执行）
+4. 更新渲染（如果需要）
+5. 重复上述步骤
+### 事件循环的示例
+#### 示例1：基本事件循环
+```js
+console.log('Start');
+
+setTimeout(() => {
+  console.log('Timeout');
+}, 0);
+
+Promise.resolve().then(() => {
+  console.log('Promise');
+});
+
+console.log('End');
+```
+执行结果：
+```js
+Start
+End
+Promise
+Timeout
+```
+解释：
+1. console.log('Start') 和 console.log('End') 是同步任务，直接执行，输出 'Start' 和 'End'。
+2. setTimeout 的回调是宏任务，放入宏任务队列。
+3. Promise.resolve().then 是微任务，放入微任务队列
+4. 执行完所有同步任务后，检查微任务队列，执行 Promise 的回调，输出 'Promise'。
+5. 最后执行宏任务队列中的 setTimeout 回调，输出 'Timeout'。
+#### 示例2：嵌套的微任务和宏任务
+```js 
+console.log('Start');
+
+setTimeout(() => {
+  console.log('Timeout 1');
+  Promise.resolve().then(() => {
+    console.log('Promise 1');
+  });
+}, 0);
+
+setTimeout(() => {
+  console.log('Timeout 2');
+}, 0);
+
+Promise.resolve().then(() => {
+  console.log('Promise 2');
+  setTimeout(() => {
+    console.log('Timeout 3');
+  }, 0);
+});
+
+console.log('End');
+```
+执行结果：
+```js
+Start
+End
+Promise 2
+Timeout 1
+Promise 1
+Timeout 2
+Timeout 3
+```
+解释：
+1. 同步任务按顺序执行，输出 Start 和 End。
+2. setTimeout 回调放入宏任务队列，Promise 放入微任务队列。
+3. 执行完同步任务后，先执行微任务 Promise 2，输出 Promise 2，然后将 Timeout 3 放入宏任务队列。
+4. 执行宏任务队列 Timeout 1，输出 Timeout 1，然后它添加的微任务 Promise 1 放入微任务队列。
+5. 执行微任务 Promise 1，输出 Promise 1 。
+6. 执行宏任务 Timeout 2，输出 Timeout 2 。
+7. 执行宏任务 Timeout 3，输出 Timeout 3 。
+
+> 总而言之，微任务先于宏任务执行，微任务执行阶段是清空整个微任务队列，而宏任务执行阶段只取出一个宏任务执行，该任务执行完毕后又循环取执行微任务。
